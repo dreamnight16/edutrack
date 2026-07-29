@@ -10,10 +10,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@maven/ai-core": "file:../maven/packages/ai-core",
-    "@maven/ai-types": "file:../maven/packages/ai-types",
-    "@maven/stores": "file:../maven/packages/stores",
-    "@maven/utils": "file:../maven/packages/utils",
+    "maven-core": "^0.1.1",
     "lucide-react": "^0.400.0",
     "next": "^14.2.0",
     "react": "^18.3.0",
