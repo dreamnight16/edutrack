@@ -1,0 +1,13 @@
+[
+  { "grade": "高一上", "month": 9, "event": "CSP-J/S 第一轮认证报名", "action": "关注NOI官网，及时报名", "tracks": ["informatics-olympiad"], "deadline": "2025-09-15" },
+  { "grade": "高一上", "month": 9, "event": "开始了解各条升学路径", "action": "浏览望塔赛道页面，了解竞赛、强基、综评的区别", "tracks": ["informatics-olympiad", "strong-base-plan", "comprehensive-evaluation"] },
+  { "grade": "高一上", "month": 10, "event": "CSP-S 第二轮", "action": "参加认证，检验水平", "tracks": ["informatics-olympiad"] },
+  { "grade": "高一下", "month": 3, "event": "省选（部分省份）", "action": "进入省队的关键一战", "tracks": ["informatics-olympiad"] },
+  { "grade": "高二上", "month": 10, "event": "NOIP 联赛", "action": "冲刺省一等奖", "tracks": ["informatics-olympiad"] },
+  { "grade": "高二上", "month": 12, "event": "部分院校综评简章发布", "action": "关注目标院校招生网", "tracks": ["comprehensive-evaluation"] },
+  { "grade": "高二下", "month": 7, "event": "NOI 全国决赛", "action": "金牌前50名保送清北", "tracks": ["informatics-olympiad"] },
+  { "grade": "高三上", "month": 12, "event": "综合评价报名集中期", "action": "准备自荐信、证明材料，网上报名", "tracks": ["comprehensive-evaluation"], "deadline": "2025-12-31" },
+  { "grade": "高三下", "month": 4, "event": "强基计划招生简章发布", "action": "锁定目标院校，网上报名", "tracks": ["strong-base-plan"] },
+  { "grade": "高三下", "month": 6, "event": "高考", "action": "所有赛道的基础", "tracks": ["informatics-olympiad", "strong-base-plan", "comprehensive-evaluation"] },
+  { "grade": "高三下", "month": 7, "event": "强基校考 / 综评面试", "action": "准备笔试面试，展示综合素质", "tracks": ["strong-base-plan", "comprehensive-evaluation"] }
+]

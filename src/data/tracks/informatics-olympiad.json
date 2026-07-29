@@ -1,0 +1,31 @@
+{
+  "id": "informatics-olympiad",
+  "name": "信息学竞赛",
+  "category": "competition",
+  "oneLiner": "用算法敲开名校大门",
+  "overview": "信息学奥林匹克竞赛（NOI系列）是五大学科竞赛之一。从省级联赛（NOIP）到全国决赛（NOI）再到国际竞赛（IOI），成绩优异者可获得保送或降分录取资格。\n\n**核心考试内容：** 算法设计、数据结构、C++编程。\n\n**适合省份：** 浙江、江苏、广东等竞赛强省有完善的培训体系。弱省学生需要更强的自学能力。",
+  "suitableFor": [
+    "理科思维突出",
+    "能坚持长期训练（至少1-2年）",
+    "有一定数学基础",
+    "对编程有好奇心"
+  ],
+  "notSuitableFor": [
+    "想高三再突击——竞赛需要长期积累",
+    "不喜欢长时间对着电脑",
+    "所在学校没有竞赛教练且自驱力不足"
+  ],
+  "keyNodes": [
+    { "grade": "高一上", "month": 9, "event": "开始学习C++基础语法", "action": "找一本入门教材，每天1小时练习" },
+    { "grade": "高一上", "month": 10, "event": "参加CSP-J/S第一轮", "action": "检测自己目前水平", "deadline": "2025-09-15" },
+    { "grade": "高一下", "month": 4, "event": "省选（部分省份）", "action": "进入省队的关键一战" },
+    { "grade": "高二上", "month": 10, "event": "NOIP 联赛", "action": "冲刺省一等奖" },
+    { "grade": "高二下", "month": 4, "event": "省选", "action": "争取进入省队" },
+    { "grade": "高二下", "month": 7, "event": "NOI 全国决赛", "action": "金牌保送清北，银牌强基破格" }
+  ],
+  "resources": [
+    { "id": "luogu", "name": "洛谷", "url": "https://www.luogu.com.cn/", "description": "国内最大的OI刷题社区，有题库、题解、比赛" },
+    { "id": "oi-wiki", "name": "OI Wiki", "url": "https://oi-wiki.org/", "description": "信息学竞赛知识百科，覆盖所有算法和数据结构" },
+    { "id": "codeforces", "name": "Codeforces", "url": "https://codeforces.com/", "description": "国际算法竞赛平台，锻炼实战能力" }
+  ]
+}

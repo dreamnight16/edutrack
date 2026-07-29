@@ -1,0 +1,28 @@
+{
+  "id": "comprehensive-evaluation",
+  "name": "综合评价招生",
+  "category": "enrollment",
+  "oneLiner": "不只看分数的一条路",
+  "overview": "综合评价招生是部分高校（如南方科技大学、上海纽约大学、昆山杜克大学等）采用的多元录取方式。不同于纯看高考分，综合评价会考察学生的综合素质、面试表现、高中成绩等。\n\n**适合：** 成绩中上但不算顶尖，有特长或社会实践经历的学生。",
+  "suitableFor": [
+    "成绩在省内中上水平",
+    "有课外活动、社会实践、志愿服务等经历",
+    "表达能力好，面试不怯场",
+    "英语能力较强（部分中外合作院校）"
+  ],
+  "notSuitableFor": [
+    "高考成绩非常突出（走统招可能去更好的学校）",
+    "没有任何课外经历、简历空白",
+    "面试表达能力很弱且不愿意练习"
+  ],
+  "keyNodes": [
+    { "grade": "高一", "month": 9, "event": "开始积累综合素质材料", "action": "参与社团、志愿服务、竞赛，保留证明材料" },
+    { "grade": "高二", "month": 9, "event": "持续积累+了解目标院校", "action": "研究各校综评简章，针对性准备" },
+    { "grade": "高三上", "month": 12, "event": "各校综评报名开始", "action": "准备材料、写自荐信", "deadline": "2025-12-31" },
+    { "grade": "高三下", "month": 6, "event": "高考后校考/面试", "action": "准备中英文面试" }
+  ],
+  "resources": [
+    { "id": "sustech-admission", "name": "南科大招生网", "url": "https://zs.sustech.edu.cn/", "description": "综合评价招生标杆院校" },
+    { "id": "nyush-admission", "name": "上纽大招生", "url": "https://shanghai.nyu.edu/cn/admissions", "description": "中外合作办学综评代表" }
+  ]
+}

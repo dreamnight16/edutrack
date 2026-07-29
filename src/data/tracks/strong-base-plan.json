@@ -1,0 +1,30 @@
+{
+  "id": "strong-base-plan",
+  "name": "强基计划",
+  "category": "enrollment",
+  "oneLiner": "基础学科的国家赛道",
+  "overview": "强基计划是2020年起实施的招生改革，聚焦数学、物理、化学、生物、信息学、历史、哲学、古文字等基础学科。由36所双一流A类高校招生。\n\n**录取方式：** 高考成绩（85%）+ 校考（15%），竞赛银牌及以上可破格入围。\n\n**注意：** 强基录取后原则上不能转专业，选择前要确定自己真的热爱基础学科。",
+  "suitableFor": [
+    "对基础学科有真实兴趣",
+    "高考成绩在省内排名靠前（一本线以上）",
+    "有竞赛经历可以加分但不是必须",
+    "愿意长期深耕一个领域"
+  ],
+  "notSuitableFor": [
+    "想通过强基作为跳板转热门专业——政策不允许",
+    "对基础学科无感、只想要名校光环",
+    "高考成绩在一本线以下（无报考资格）"
+  ],
+  "keyNodes": [
+    { "grade": "高一上", "month": 9, "event": "了解强基计划政策", "action": "阅读教育部文件和各校招生简章" },
+    { "grade": "高二下", "month": 4, "event": "判断是否适合强基", "action": "结合兴趣和成绩，决定是否要走这条路" },
+    { "grade": "高三上", "month": 12, "event": "关注各校强基简章发布", "action": "提前锁定目标院校" },
+    { "grade": "高三下", "month": 4, "event": "强基报名", "action": "网上报名，选择院校和专业" },
+    { "grade": "高三下", "month": 6, "event": "参加高考", "action": "高考成绩是入围的关键" },
+    { "grade": "高三下", "month": 7, "event": "校考", "action": "笔试+面试+体测" }
+  ],
+  "resources": [
+    { "id": "moe-strong-base", "name": "教育部强基计划专题", "url": "https://gaokao.chsi.com.cn/gkzt/jcxkzs", "description": "官方政策解读和报名入口" },
+    { "id": "tsinghua-qiangji", "name": "清华强基经验帖", "url": "https://www.zhihu.com/topic/21056828", "description": "知乎上清华强基过来人的经验分享" }
+  ]
+}

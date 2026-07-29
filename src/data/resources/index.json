@@ -1,0 +1,90 @@
+[
+  {
+    "id": "luogu",
+    "name": "洛谷",
+    "url": "https://www.luogu.com.cn/",
+    "description": "国内最大的OI刷题社区，海量题库+题解+定期比赛",
+    "type": "tool",
+    "cost": "freemium",
+    "tracks": ["informatics-olympiad"],
+    "gradeRange": [10, 12],
+    "tags": ["编程", "算法", "竞赛"]
+  },
+  {
+    "id": "oi-wiki",
+    "name": "OI Wiki",
+    "url": "https://oi-wiki.org/",
+    "description": "信息学竞赛知识百科，覆盖所有算法与数据结构，开源协作",
+    "type": "article",
+    "cost": "free",
+    "tracks": ["informatics-olympiad"],
+    "gradeRange": [10, 12],
+    "tags": ["编程", "算法", "知识库"]
+  },
+  {
+    "id": "codeforces",
+    "name": "Codeforces",
+    "url": "https://codeforces.com/",
+    "description": "全球最大算法竞赛平台，定期举办比赛，锻炼实战能力",
+    "type": "tool",
+    "cost": "free",
+    "tracks": ["informatics-olympiad"],
+    "gradeRange": [10, 12],
+    "tags": ["编程", "算法", "比赛"]
+  },
+  {
+    "id": "moe-strong-base",
+    "name": "教育部强基计划专题",
+    "url": "https://gaokao.chsi.com.cn/gkzt/jcxkzs",
+    "description": "阳光高考网强基计划官方入口，政策+报名",
+    "type": "official",
+    "cost": "free",
+    "tracks": ["strong-base-plan"],
+    "gradeRange": [11, 12],
+    "tags": ["政策", "强基", "官方"]
+  },
+  {
+    "id": "tsinghua-qiangji",
+    "name": "清华强基经验帖合集",
+    "url": "https://www.zhihu.com/topic/21056828",
+    "description": "知乎上清华强基过来人的经验分享",
+    "type": "community",
+    "cost": "free",
+    "tracks": ["strong-base-plan"],
+    "gradeRange": [11, 12],
+    "tags": ["强基", "经验", "面试"]
+  },
+  {
+    "id": "sustech-admission",
+    "name": "南方科技大学招生网",
+    "url": "https://zs.sustech.edu.cn/",
+    "description": "综合评价招生标杆院校，每年12月发布综评简章",
+    "type": "official",
+    "cost": "free",
+    "tracks": ["comprehensive-evaluation"],
+    "gradeRange": [11, 12],
+    "tags": ["综合评价", "招生", "官方"]
+  },
+  {
+    "id": "nyush-admission",
+    "name": "上海纽约大学招生",
+    "url": "https://shanghai.nyu.edu/cn/admissions",
+    "description": "中外合作办学综合评价招生代表，校园日面试",
+    "type": "official",
+    "cost": "free",
+    "tracks": ["comprehensive-evaluation"],
+    "gradeRange": [11, 12],
+    "tags": ["综合评价", "中外合作", "面试"]
+  },
+  {
+    "id": "acwing",
+    "name": "AcWing",
+    "url": "https://www.acwing.com/",
+    "description": "算法学习平台，有系统的课程体系，从入门到进阶",
+    "type": "course",
+    "cost": "freemium",
+    "tracks": ["informatics-olympiad"],
+    "gradeRange": [10, 12],
+    "tags": ["编程", "算法", "课程"]
+  }
+]
