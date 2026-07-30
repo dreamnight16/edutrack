@@ -1,6 +1,6 @@
 [
   { "grade": "高一上", "month": 9, "event": "CSP-J/S 第一轮认证报名", "action": "关注NOI官网，及时报名", "tracks": ["informatics-olympiad"], "deadline": "2025-09-15" },
-  { "grade": "高一上", "month": 9, "event": "开始了解各条升学路径", "action": "浏览望塔赛道页面，了解竞赛、强基、综评的区别", "tracks": ["informatics-olympiad", "strong-base-plan", "comprehensive-evaluation"] },
+  { "grade": "高一上", "month": 9, "event": "开始了解各条升学路径", "action": "浏览世界线赛道页面，了解竞赛、强基、综评的区别", "tracks": ["informatics-olympiad", "strong-base-plan", "comprehensive-evaluation"] },
   { "grade": "高一上", "month": 10, "event": "CSP-S 第二轮", "action": "参加认证，检验水平", "tracks": ["informatics-olympiad"] },
   { "grade": "高一下", "month": 3, "event": "省选（部分省份）", "action": "进入省队的关键一战", "tracks": ["informatics-olympiad"] },
   { "grade": "高二上", "month": 10, "event": "NOIP 联赛", "action": "冲刺省一等奖", "tracks": ["informatics-olympiad"] },

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: '望塔 — 看见同龄人的路',
+  title: '世界线 — 看见同龄人的路',
   description: '全国各地高中生在走什么路、用什么资源、什么时候做什么。打破信息差。',
 };
 

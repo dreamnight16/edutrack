@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <>
       <PageHeader
-        title="望塔"
+        title="世界线"
         subtitle={`看看全国同龄人在走什么路 · ${allTracks.length} 条赛道`}
       />
       <CategoryFilter selected={category} onSelect={setCategory} />
