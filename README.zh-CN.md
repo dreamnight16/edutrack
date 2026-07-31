@@ -1,3 +1,5 @@
+**语言 / Language:** [English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-Hant.md) | [日本語](README.ja.md)
+
 # 世界线（Worldline）— 看见同龄人的路
 
 > 高中生信息破壁 · 看见同龄人的升学赛道

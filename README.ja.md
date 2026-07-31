@@ -1,3 +1,5 @@
+**言語 / Language:** [English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-Hant.md) | [日本語](README.ja.md)
+
 # 世界線（Worldline）— 同世代の道が見える
 
 > 高校生の情報の壁を打ち破る · 同世代の進学レーンを見る
