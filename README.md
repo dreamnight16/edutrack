@@ -1,6 +1,6 @@
-# 世界线（Worldline）— 看见同龄人的路
+# Worldline（世界线）— See the paths of your peers
 
-> 打破信息差——全国各地高中生在走什么路、用什么资源、什么时候做什么。
+> Breaking the information barrier for high school students — see your peers' pathways to college.
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
@@ -8,29 +8,29 @@
 
 ---
 
-## 这是什么
+## What is this
 
-高考不是唯一的出路——竞赛保送、强基计划、综合评价、艺考、体育单招、出国留学、高职单招……每条路都有不同的时间节点、资源需求和风险回报。
+The gaokao is not the only path forward — olympiad admissions, the Strong Foundation Plan, comprehensive evaluation, art school, sports recruitment, studying abroad, vocational college recruitment... each path has different timelines, resource requirements, and risk-reward profiles.
 
-小红书和知乎上充斥着"逆袭"叙事，但沉默的大多数怎么走的路你根本看不到。
+Xiaohongshu and Zhihu are full of "overnight success" stories, but you never see how the silent majority actually walks their path.
 
-世界线做的事很简单：**把全国同龄人真实在走的升学赛道展示出来**——每条赛道有什么关键节点、适合谁、不适合谁、需要什么资源。不替你判断，只帮你看到全貌。
-
----
-
-## 赛道
-
-| 赛道 | 类型 | 说明 |
-|------|------|------|
-| 信息学竞赛 | 竞赛 | CSP-J/S → NOIP → 省选 → NOI → 国家集训队 |
-| 强基计划 | 招生 | 39 所双一流高校的基础学科拔尖招生 |
-| 综合评价 | 招生 | 高考成绩 + 校测 + 学考的综合录取方式 |
-
-> 更多赛道持续添加中。
+Worldline does one simple thing: **shows the real academic tracks that high schoolers across the country are on** — what key milestones each track has, who it fits, who it doesn't, and what resources it needs. It doesn't decide for you; it helps you see the full picture.
 
 ---
 
-## 快速开始
+## Tracks
+
+| Track | Type | Description |
+|-------|------|-------------|
+| Informatics Olympiad | Competition | CSP-J/S → NOIP → Provincial Selection → NOI → National Training Team |
+| Strong Foundation Plan | Admissions | Basic-discipline elite recruitment by 39 Double First-Class universities |
+| Comprehensive Evaluation | Admissions | Admission combining gaokao score + school test + academic exams |
+
+> More tracks are being added.
+
+---
+
+## Quick Start
 
 ```bash
 git clone https://github.com/sixtdreanight/edutrack.git
@@ -41,22 +41,22 @@ npm run dev
 
 ---
 
-## 技术栈
+## Tech Stack
 
-| 技术 | 用途 |
-|------|------|
-| Next.js 14 | 全栈框架 |
-| TypeScript | 类型安全 |
-| Tailwind CSS | 样式 |
-| Maven Core | AI 客户端 + 数据存储 |
-| Vitest | 测试 |
+| Technology | Purpose |
+|------------|---------|
+| Next.js 14 | Full-stack framework |
+| TypeScript | Type safety |
+| Tailwind CSS | Styling |
+| Maven Core | AI client + data storage |
+| Vitest | Testing |
 
 ---
 
-## 相关项目
+## Related Projects
 
-- [歧点（Divergence）](https://github.com/sixtdreanight/career-compass) — 大学生职业规划
-- [Maven](https://github.com/sixtdreanight/maven) — 共享核心库
+- [Divergence（歧点）](https://github.com/sixtdreanight/career-compass) — College career planning
+- [Maven](https://github.com/sixtdreanight/maven) — Shared core library
 
 ---
 
