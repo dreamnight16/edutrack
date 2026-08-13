@@ -50,7 +50,6 @@ npm run dev
 | Next.js 14 | 全棧框架 |
 | TypeScript | 類型安全 |
 | Tailwind CSS | 樣式 |
-| Maven Core | AI 用戶端 + 資料儲存 |
 | Vitest | 測試 |
 
 ---

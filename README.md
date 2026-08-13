@@ -32,6 +32,11 @@ Worldline does one simple thing: **shows the real academic tracks that high scho
 
 ---
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) 18.17 or later (20.x LTS recommended)
+- npm (bundled with Node.js)
+
 ## Quick Start
 
 ```bash
@@ -39,6 +44,21 @@ git clone https://github.com/dreamnight16/edutrack.git
 cd edutrack
 npm install
 npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Production Build
+
+```bash
+npm run build
+npm run start
+```
+
+## Testing
+
+```bash
+npm test
 ```
 
 ---
@@ -50,7 +70,6 @@ npm run dev
 | Next.js 14 | Full-stack framework |
 | TypeScript | Type safety |
 | Tailwind CSS | Styling |
-| Maven Core | AI client + data storage |
 | Vitest | Testing |
 
 ---

@@ -50,7 +50,6 @@ npm run dev
 | Next.js 14 | 全栈框架 |
 | TypeScript | 类型安全 |
 | Tailwind CSS | 样式 |
-| Maven Core | AI 客户端 + 数据存储 |
 | Vitest | 测试 |
 
 ---

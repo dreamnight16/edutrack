@@ -50,7 +50,6 @@ npm run dev
 | Next.js 14 | フルスタックフレームワーク |
 | TypeScript | 型安全性 |
 | Tailwind CSS | スタイリング |
-| Maven Core | AI クライアント + データ保存 |
 | Vitest | テスト |
 
 ---

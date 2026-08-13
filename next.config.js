@@ -1,5 +1,3 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  transpilePackages: ['maven-core'],
-};
+const nextConfig = {};
 module.exports = nextConfig;
