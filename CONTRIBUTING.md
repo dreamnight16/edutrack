@@ -5,7 +5,7 @@ Thanks for your interest in contributing!
 ## Getting Started
 
 ```bash
-git clone https://github.com/sixtdreanight/edutrack.git
+git clone https://github.com/dreamnight16/edutrack.git
 cd edutrack
 npm install
 npm run dev
@@ -58,6 +58,6 @@ Track data lives in `src/data/tracks/*.json`. When adding a new track:
 
 ## Questions?
 
-Open a [discussion](https://github.com/sixtdreanight/edutrack/discussions).
+Open a [discussion](https://github.com/dreamnight16/edutrack/discussions).
 
 [conv]: https://www.conventionalcommits.org/

@@ -13,4 +13,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial project scaffold with Next.js 14, worldline landing page concept
 
-[0.1.0]: https://github.com/sixtdreanight/edutrack/releases/tag/v0.1.0
+[0.1.0]: https://github.com/dreamnight16/edutrack/releases/tag/v0.1.0

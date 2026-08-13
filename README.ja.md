@@ -35,7 +35,7 @@
 ## クイックスタート
 
 ```bash
-git clone https://github.com/sixtdreanight/edutrack.git
+git clone https://github.com/dreamnight16/edutrack.git
 cd edutrack
 npm install
 npm run dev
@@ -57,8 +57,8 @@ npm run dev
 
 ## 関連プロジェクト
 
-- [Divergence（歧點）](https://github.com/sixtdreanight/career-compass) — 大学生向けキャリアプランニング
-- [Maven](https://github.com/sixtdreanight/maven) — 共有コアライブラリ
+- [Divergence（歧點）](https://github.com/dreamnight16/career-compass) — 大学生向けキャリアプランニング
+- [Maven](https://github.com/dreamnight16/maven) — 共有コアライブラリ
 
 ---
 

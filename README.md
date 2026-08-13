@@ -35,7 +35,7 @@ Worldline does one simple thing: **shows the real academic tracks that high scho
 ## Quick Start
 
 ```bash
-git clone https://github.com/sixtdreanight/edutrack.git
+git clone https://github.com/dreamnight16/edutrack.git
 cd edutrack
 npm install
 npm run dev
@@ -57,8 +57,8 @@ npm run dev
 
 ## Related Projects
 
-- [Divergence（歧点）](https://github.com/sixtdreanight/career-compass) — College career planning
-- [Maven](https://github.com/sixtdreanight/maven) — Shared core library
+- [Divergence（歧点）](https://github.com/dreamnight16/career-compass) — College career planning
+- [Maven](https://github.com/dreamnight16/maven) — Shared core library
 
 ---
 

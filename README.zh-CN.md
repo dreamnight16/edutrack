@@ -35,7 +35,7 @@
 ## 快速开始
 
 ```bash
-git clone https://github.com/sixtdreanight/edutrack.git
+git clone https://github.com/dreamnight16/edutrack.git
 cd edutrack
 npm install
 npm run dev
@@ -57,8 +57,8 @@ npm run dev
 
 ## 相关项目
 
-- [歧点（Divergence）](https://github.com/sixtdreanight/career-compass) — 大学生职业规划
-- [Maven](https://github.com/sixtdreanight/maven) — 共享核心库
+- [歧点（Divergence）](https://github.com/dreamnight16/career-compass) — 大学生职业规划
+- [Maven](https://github.com/dreamnight16/maven) — 共享核心库
 
 ---
 
