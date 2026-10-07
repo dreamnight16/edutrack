@@ -29,7 +29,7 @@ export function TrackCard({ track }: TrackCardProps) {
 
   return (
     <Link href={`/tracks/${track.id}`}>
-      <article className="bg-surface rounded-card shadow-card hover:shadow-card-hover transition-shadow p-4 border border-primary/5">
+      <article className="signal-surface bg-surface rounded-card shadow-card p-4">
         <div className="flex items-center gap-2 mb-2">
           <TagBadge
             label={CATEGORY_LABELS[track.category] ?? track.category}

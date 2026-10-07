@@ -24,7 +24,7 @@ export function ResourceCard({ resource }: ResourceCardProps) {
       href={resource.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-surface rounded-card border border-primary/10 p-4 shadow-card hover:shadow-card-hover transition-shadow"
+      className="signal-surface block bg-surface rounded-card p-4 shadow-card"
     >
       <div className="flex items-start justify-between mb-2">
         <h3 className="text-sm font-semibold text-foreground flex-1 mr-2">

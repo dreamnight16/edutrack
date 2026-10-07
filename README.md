@@ -18,6 +18,8 @@ Xiaohongshu and Zhihu are full of "overnight success" stories, but you never see
 
 Worldline does one simple thing: **shows the real academic tracks that high schoolers across the country are on** — what key milestones each track has, who it fits, who it doesn't, and what resources it needs. It doesn't decide for you; it helps you see the full picture.
 
+The quick-search page uses the bundled track and resource data locally. It does not require an AI model, API key, or network connection.
+
 ---
 
 ## Tracks

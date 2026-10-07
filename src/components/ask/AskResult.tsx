@@ -15,7 +15,7 @@ export function AskResult({ query, tracks, resources }: AskResultProps) {
   return (
     <div className="px-4 space-y-4">
       <p className="text-sm text-muted">
-        关于「{query}」的结果：
+        按关键词匹配「{query}」：
       </p>
       {!hasResults && (
         <EmptyState

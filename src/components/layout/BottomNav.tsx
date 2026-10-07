@@ -7,7 +7,7 @@ const TABS = [
   { id: 'home', label: '发现', icon: Home, href: '/' },
   { id: 'timeline', label: '时间线', icon: Calendar, href: '/timeline' },
   { id: 'resources', label: '资源库', icon: BookOpen, href: '/resources' },
-  { id: 'ask', label: 'AI 问问', icon: MessageCircle, href: '/ask' },
+  { id: 'ask', label: '快速查找', icon: MessageCircle, href: '/ask' },
 ] as const;
 
 export function BottomNav() {
@@ -15,8 +15,8 @@ export function BottomNav() {
   const router = useRouter();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-surface border-t border-primary/10 z-50">
-      <div className="max-w-lg mx-auto flex justify-around py-2">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-primary/10 bg-surface md:bottom-5 md:left-1/2 md:right-auto md:w-auto md:-translate-x-1/2 md:rounded-chip md:border md:shadow-card">
+      <div className="mx-auto flex max-w-lg justify-around py-2 md:px-2">
         {TABS.map((tab) => {
           const isActive =
             tab.href === '/'
@@ -27,7 +27,8 @@ export function BottomNav() {
             <button
               key={tab.id}
               onClick={() => router.push(tab.href)}
-              className={`flex flex-col items-center gap-1 px-3 py-1 rounded-card transition-colors ${
+              aria-current={isActive ? 'page' : undefined}
+              className={`flex min-h-11 flex-col items-center justify-center gap-1 rounded-card px-3 py-1 transition-colors ${
                 isActive
                   ? 'text-primary'
                   : 'text-muted hover:text-foreground'

@@ -21,7 +21,7 @@ export default function HomePage() {
         subtitle={`看看全国同龄人在走什么路 · ${allTracks.length} 条赛道`}
       />
       <CategoryFilter selected={category} onSelect={setCategory} />
-      <div className="px-4 space-y-3">
+      <div className="grid gap-3 px-4 md:grid-cols-2">
         {tracks.length === 0 ? (
           <EmptyState
             icon="🔍"

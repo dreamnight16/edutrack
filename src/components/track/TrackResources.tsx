@@ -15,7 +15,7 @@ export function TrackResources({ resources }: TrackResourcesProps) {
           href={r.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="block bg-surface rounded-card border border-primary/10 p-3 hover:shadow-card-hover transition-shadow"
+          className="signal-surface block bg-surface rounded-card p-3"
         >
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-foreground">{r.name}</span>

@@ -30,7 +30,7 @@ export function AskInput({ onSubmit, loading }: AskInputProps) {
           disabled={loading}
           className="px-5 py-3 bg-primary text-white rounded-card text-sm font-medium hover:bg-primary-dark transition-colors disabled:opacity-50"
         >
-          {loading ? '思考中...' : '提问'}
+          {loading ? '查找中...' : '查找'}
         </button>
       </div>
     </form>
