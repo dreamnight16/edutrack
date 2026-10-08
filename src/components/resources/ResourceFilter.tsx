@@ -1,28 +1,19 @@
-import type { ResourceType, ResourceCost } from '@/types';
-
-const TYPES: Array<{ id: ResourceType | 'all'; label: string }> = [
-  { id: 'all', label: '全部类型' },
-  { id: 'book', label: '书籍' },
-  { id: 'course', label: '课程' },
-  { id: 'tool', label: '工具' },
-  { id: 'community', label: '社区' },
-  { id: 'official', label: '官方' },
-  { id: 'article', label: '文章' },
-  { id: 'video', label: '视频' },
-];
-
-const COSTS: Array<{ id: ResourceCost | 'all'; label: string }> = [
-  { id: 'all', label: '全部' },
-  { id: 'free', label: '免费' },
-  { id: 'freemium', label: '部分免费' },
-  { id: 'paid', label: '付费' },
-];
+import type { ResourceCost, ResourceType } from '@/types';
+import {
+  COST_META,
+  COST_ORDER,
+  RESOURCE_TYPE_LABELS,
+  RESOURCE_TYPE_ORDER,
+} from '@/lib/theme';
 
 interface ResourceFilterProps {
   type: ResourceType | 'all';
   cost: ResourceCost | 'all';
-  onTypeChange: (t: ResourceType | 'all') => void;
-  onCostChange: (c: ResourceCost | 'all') => void;
+  onTypeChange: (type: ResourceType | 'all') => void;
+  onCostChange: (cost: ResourceCost | 'all') => void;
+  /** How many entries each option would return, counted from the full library. */
+  typeCounts: Record<string, number>;
+  costCounts: Record<string, number>;
 }
 
 export function ResourceFilter({
@@ -30,38 +21,80 @@ export function ResourceFilter({
   cost,
   onTypeChange,
   onCostChange,
+  typeCounts,
+  costCounts,
 }: ResourceFilterProps) {
+  const types: Array<{ id: ResourceType | 'all'; label: string }> = [
+    { id: 'all', label: '全部类型' },
+    ...RESOURCE_TYPE_ORDER.map((id) => ({ id, label: RESOURCE_TYPE_LABELS[id] })),
+  ];
+
+  const costs: Array<{ id: ResourceCost | 'all'; label: string; mark?: string }> = [
+    { id: 'all', label: '全部' },
+    ...COST_ORDER.map((id) => ({
+      id,
+      label: COST_META[id].label,
+      mark: COST_META[id].mark,
+    })),
+  ];
+
   return (
-    <div className="px-4 space-y-2">
-      <div className="flex gap-2 overflow-x-auto">
-        {TYPES.map((t) => (
-          <button
-            key={t.id}
-            onClick={() => onTypeChange(t.id)}
-            className={`shrink-0 px-3 py-1 rounded-chip text-xs font-medium transition-colors ${
-              type === t.id
-                ? 'bg-primary text-white'
-                : 'bg-surface text-muted hover:text-foreground border border-primary/10'
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
+    <div className="space-y-5">
+      <div>
+        <span className="wl-kicker wl-secondary" id="filter-type-label">
+          资源类型
+        </span>
+        <div
+          className="wl-segbar wl-segbar--stack"
+          role="group"
+          aria-labelledby="filter-type-label"
+          style={{ marginTop: '0.5rem' }}
+        >
+          {types.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              className="wl-seg dn-focus"
+              aria-pressed={type === option.id}
+              onClick={() => onTypeChange(option.id)}
+            >
+              <span>{option.label}</span>
+              <span className="wl-seg__count">{typeCounts[option.id] ?? 0}</span>
+            </button>
+          ))}
+        </div>
       </div>
-      <div className="flex gap-2">
-        {COSTS.map((c) => (
-          <button
-            key={c.id}
-            onClick={() => onCostChange(c.id)}
-            className={`shrink-0 px-3 py-1 rounded-chip text-xs font-medium transition-colors ${
-              cost === c.id
-                ? 'bg-accent text-white'
-                : 'bg-surface text-muted hover:text-foreground border border-primary/10'
-            }`}
-          >
-            {c.label}
-          </button>
-        ))}
+
+      <div>
+        <span className="wl-kicker wl-secondary" id="filter-cost-label">
+          费用
+        </span>
+        <div
+          className="wl-segbar wl-segbar--stack"
+          role="group"
+          aria-labelledby="filter-cost-label"
+          style={{ marginTop: '0.5rem' }}
+        >
+          {costs.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              className="wl-seg dn-focus"
+              aria-pressed={cost === option.id}
+              onClick={() => onCostChange(option.id)}
+            >
+              <span>
+                {option.mark ? (
+                  <span className="wl-mark" aria-hidden="true">
+                    {option.mark}{' '}
+                  </span>
+                ) : null}
+                {option.label}
+              </span>
+              <span className="wl-seg__count">{costCounts[option.id] ?? 0}</span>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

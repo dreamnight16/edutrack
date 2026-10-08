@@ -1,41 +1,40 @@
 import type { Config } from 'tailwindcss';
 
+/**
+ * Colours, radii, fonts and easings are NOT defined here.
+ * They live in public/vendor/dndl/tokens.css (DNDL v1.0, implementation 1.1.0)
+ * and are referenced through var(--dn-*). See public/vendor/dndl/VERSION.
+ */
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#2F78C4',
-          light: '#5A9BD6',
-          dark: '#225A96',
-        },
-        accent: '#F2B84B',
-        background: '#F2F5F7',
-        surface: '#FFFFFF',
-        foreground: '#17202A',
-        muted: '#61707C',
-        competition: '#6F67D8',
-        enrollment: '#2EA79B',
-        art: '#D85B8A',
-        sport: '#E09B35',
-        overseas: '#2F9FB7',
-        vocational: '#5D76C8',
+        canvas: 'var(--dn-canvas)',
+        surface: 'var(--dn-surface)',
+        divider: 'var(--dn-divider)',
+        ink: 'var(--dn-text-primary)',
+        'ink-secondary': 'var(--dn-text-secondary)',
       },
       borderRadius: {
-        card: '0px',
-        chip: '0px',
+        DEFAULT: 'var(--dn-radius)',
+        none: 'var(--dn-radius)',
       },
       fontFamily: {
-        display: ['"Noto Sans SC"', 'sans-serif'],
-        body: ['"Noto Sans SC"', '"PingFang SC"', 'Microsoft YaHei', 'sans-serif'],
+        display: 'var(--dn-font-display)',
+        body: 'var(--dn-font)',
       },
-      boxShadow: {
-        card: '0 2px 8px rgba(0,0,0,0.06)',
-        'card-hover': '0 16px 32px rgba(23,32,42,0.11), 0 0 0 1px rgba(242,184,75,0.16)',
+      maxWidth: {
+        shell: 'var(--wl-shell)',
       },
     },
   },
+  /**
+   * The track grid picks a modifier from the result count at runtime, so the
+   * scanner cannot see it in the markup. The eight colour-field classes are
+   * listed literally in src/lib/theme.ts instead.
+   */
+  safelist: ['wl-trackfield--half', 'wl-trackfield--featured'],
   plugins: [],
 };
 

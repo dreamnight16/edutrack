@@ -5,13 +5,18 @@ interface ResourceSearchProps {
 
 export function ResourceSearch({ value, onChange }: ResourceSearchProps) {
   return (
-    <div className="px-4">
+    <div>
+      <label htmlFor="resource-search" className="wl-kicker wl-secondary">
+        搜索资源
+      </label>
       <input
-        type="text"
+        id="resource-search"
+        type="search"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder="搜索资源..."
-        className="w-full px-4 py-2.5 rounded-card border border-primary/10 bg-surface text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-primary/30 transition-colors"
+        onChange={(event) => onChange(event.target.value)}
+        placeholder="按名称、说明或标签匹配"
+        className="wl-input dn-focus"
+        style={{ marginTop: '0.5rem' }}
       />
     </div>
   );

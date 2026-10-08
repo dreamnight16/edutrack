@@ -1,37 +1,32 @@
 import type { TrackCard } from '@/types';
-import { TagBadge } from '@/components/shared/TagBadge';
 
 interface TrackOverviewProps {
   track: TrackCard;
 }
 
+/**
+ * The overview text ships with inline **emphasis** markers. They are rendered as
+ * emphasis rather than leaked as literal asterisks, and the paragraph breaks in
+ * the source string are preserved.
+ */
+function withEmphasis(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+    return <span key={index}>{part}</span>;
+  });
+}
+
 export function TrackOverview({ track }: TrackOverviewProps) {
   return (
-    <div className="px-4 space-y-4">
-      <section>
-        <h2 className="text-lg font-bold font-display mb-2">📖 这是什么路</h2>
-        <div className="text-sm text-foreground leading-relaxed whitespace-pre-line">
-          {track.overview}
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-lg font-bold font-display mb-2">✅ 适合你，如果</h2>
-        <div className="flex flex-wrap gap-2">
-          {track.suitableFor.map((s) => (
-            <TagBadge key={s} label={s} colorClass="bg-enrollment/10 text-enrollment" />
-          ))}
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-lg font-bold font-display mb-2">❌ 不适合你，如果</h2>
-        <div className="flex flex-wrap gap-2">
-          {track.notSuitableFor.map((s) => (
-            <TagBadge key={s} label={s} colorClass="bg-sport/10 text-sport" />
-          ))}
-        </div>
-      </section>
-    </div>
+    <section aria-labelledby="track-overview">
+      <h2 id="track-overview" className="wl-kicker wl-secondary">
+        这是什么路
+      </h2>
+      <div className="wl-prose wl-measure" style={{ marginTop: '1rem' }}>
+        {withEmphasis(track.overview)}
+      </div>
+    </section>
   );
 }

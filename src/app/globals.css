@@ -2,79 +2,808 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Worldline · product layer
+
+   Brand values (colour, type, radius, elevation, motion, acrylic) live in
+   public/vendor/dndl/tokens.css + materials.css + motion.css and are consumed
+   through var(--dn-*). Nothing below redefines a brand value.
+
+   Only product-local layout variables are declared here (allowed by the DNDL
+   agent rules: spacing, breakpoints and product grids are project concerns).
+   --------------------------------------------------------------------------- */
+
 :root {
-  --world-ink: #17202a;
-  --world-paper: #f2f5f7;
-  --world-line: #d5dfe6;
-  --world-primary: #2f78c4;
-  --world-accent: #f2b84b;
-  --world-cyan: #2ea79b;
-  --world-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --world-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --wl-shell: 1180px;
+  --wl-gutter: 1.25rem;
+  --wl-rule: 1px solid var(--dn-divider);
+  --wl-rule-strong: 1px solid var(--dn-control-border);
 }
 
-html { background: var(--world-paper); }
+@media (min-width: 768px) {
+  :root {
+    --wl-gutter: 2.5rem;
+  }
+}
+
+html {
+  background: var(--dn-canvas);
+}
 
 body {
-  background-color: var(--world-paper);
-  color: var(--world-ink);
+  background: var(--dn-canvas);
+  color: var(--dn-text-primary);
+  font-family: var(--dn-font);
+  font-size: var(--dn-size-body);
+  font-weight: var(--dn-weight-body);
+  line-height: var(--dn-leading-body);
   -webkit-font-smoothing: antialiased;
-  background-image: linear-gradient(rgba(78, 108, 128, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(78, 108, 128, 0.045) 1px, transparent 1px);
-  background-size: 24px 24px;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: -24%;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(circle at 18% 16%, rgba(47,120,196,0.10), transparent 22%),
-    radial-gradient(circle at 84% 68%, rgba(46,167,155,0.10), transparent 24%);
-  animation: world-signal 16s var(--world-ease) infinite alternate;
+::selection {
+  background: var(--dn-teal);
+  color: var(--dn-text-on-color);
 }
 
-@keyframes world-signal {
-  from { transform: translate3d(-2%, -1%, 0) scale(0.98); opacity: 0.65; }
-  to { transform: translate3d(2%, 1%, 0) scale(1.03); opacity: 1; }
+/* Focus is never removed. The ring colour is the DNDL semantic focus token,
+   which is validated on canvas, surface and every brand colour field. */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: var(--dn-focus-width) solid var(--dn-focus);
+  outline-offset: var(--dn-focus-offset);
+}
+
+@media (forced-colors: active) {
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline-color: Highlight;
+  }
 }
 
 @layer components {
-  .rounded-card,
-  .rounded-chip,
-  .rounded-sm,
-  .rounded-md,
-  .rounded-lg,
-  .rounded-xl,
-  .rounded-2xl,
-  button,
-  input,
-  textarea,
-  select {
-    border-radius: 0 !important;
+  /* ---------- shell ------------------------------------------------------ */
+
+  .wl-shell {
+    width: 100%;
+    max-width: var(--wl-shell);
+    margin-inline: auto;
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
   }
 
-  .signal-surface {
+  @media (min-width: 768px) {
+    .wl-shell {
+      padding-top: 4.75rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  .wl-pad {
+    padding-inline: var(--wl-gutter);
+  }
+
+  .wl-band {
+    padding-block: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .wl-band {
+      padding-block: 3.5rem;
+    }
+  }
+
+  .wl-rule {
+    border-top: var(--wl-rule);
+  }
+
+  .wl-skip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--dn-z-modal);
+    padding: 0.75rem 1.25rem;
+    background: var(--dn-text-primary);
+    color: var(--dn-text-on-ink);
+    transform: translateY(-120%);
+  }
+
+  .wl-skip:focus {
+    transform: translateY(0);
+  }
+
+  /* ---------- typography ------------------------------------------------- */
+
+  .wl-kicker {
+    font-size: var(--dn-size-kicker);
+    font-weight: var(--dn-weight-kicker);
+    letter-spacing: var(--dn-tracking-kicker);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .wl-display {
+    font-family: var(--dn-font-display);
+    font-weight: var(--dn-weight-display);
+    font-size: var(--dn-size-display);
+    line-height: var(--dn-leading-display);
+    letter-spacing: -0.015em;
+  }
+
+  .wl-h1 {
+    font-family: var(--dn-font-display);
+    font-weight: var(--dn-weight-display);
+    font-size: var(--dn-size-h1);
+    line-height: 1.12;
+  }
+
+  .wl-h2 {
+    font-family: var(--dn-font-display);
+    font-weight: var(--dn-weight-display);
+    font-size: var(--dn-size-h2);
+    line-height: 1.2;
+  }
+
+  .wl-h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .wl-lead {
+    font-size: clamp(1rem, 1.5vw, 1.1875rem);
+    line-height: 1.65;
+    max-width: 46ch;
+  }
+
+  .wl-measure {
+    max-width: 68ch;
+  }
+
+  .wl-secondary {
+    color: var(--dn-text-secondary);
+  }
+
+  .wl-num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- solid brand colour fields ---------------------------------- */
+
+  /* Body copy on a field always uses --dn-text-on-color; hierarchy comes from
+     size and weight, never from reduced opacity. */
+  .wl-field {
     position: relative;
-    border: 1px solid color-mix(in srgb, var(--world-line) 85%, transparent);
-    box-shadow: 0 8px 24px rgba(23, 32, 42, 0.07);
-    transition: transform 360ms var(--world-spring), box-shadow 280ms var(--world-ease), border-color 220ms ease;
+    color: var(--dn-text-on-color);
   }
 
-  .signal-surface:hover {
-    transform: translateY(-3px);
-    border-color: color-mix(in srgb, var(--world-primary) 28%, var(--world-line));
-    box-shadow: 0 16px 32px rgba(23, 32, 42, 0.11), 0 0 0 1px rgba(242, 184, 75, 0.16);
-  }
-}
+  .wl-field--teal { background: var(--dn-teal); }
+  .wl-field--cyan { background: var(--dn-cyan); }
+  .wl-field--emerald { background: var(--dn-emerald); }
+  .wl-field--violet { background: var(--dn-violet); }
+  .wl-field--amber { background: var(--dn-amber); }
+  .wl-field--orange { background: var(--dn-orange); }
+  .wl-field--steel { background: var(--dn-steel); }
+  .wl-field--crimson { background: var(--dn-crimson); }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+  .wl-masthead {
+    padding: 2rem var(--wl-gutter) 2.25rem;
   }
-  body::before { animation: none; }
+
+  @media (min-width: 768px) {
+    .wl-masthead {
+      padding: 3.5rem var(--wl-gutter) 3rem;
+    }
+  }
+
+  .wl-hero {
+    padding: 3rem var(--wl-gutter) 3.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .wl-hero {
+      padding: 6rem var(--wl-gutter) 4.5rem;
+    }
+  }
+
+  /* ---------- facts (numbers as interface) ------------------------------- */
+
+  .wl-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.75rem;
+    margin: 0;
+  }
+
+  .wl-facts > div {
+    min-width: 4.5rem;
+  }
+
+  .wl-facts dt {
+    font-size: var(--dn-size-kicker);
+    font-weight: var(--dn-weight-kicker);
+    letter-spacing: var(--dn-tracking-kicker);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .wl-facts dd {
+    margin: 0.375rem 0 0;
+    font-family: var(--dn-font-display);
+    font-weight: var(--dn-weight-display);
+    font-size: 1.75rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .wl-facts--canvas dt {
+    color: var(--dn-text-secondary);
+  }
+
+  /* ---------- controls ---------------------------------------------------- */
+
+  /* Hairlines close the box: the container draws top/left, each segment draws
+     right/bottom, so wrapping rows and the stacked variant both stay sealed. */
+  .wl-segbar {
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--dn-surface);
+    border-top: var(--wl-rule);
+    border-left: var(--wl-rule);
+  }
+
+  .wl-segbar--stack {
+    flex-direction: column;
+  }
+
+  .wl-seg {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex: 1 1 auto;
+    min-height: var(--dn-target-min);
+    padding: 0.625rem 1rem;
+    border: 0;
+    border-right: var(--wl-rule);
+    border-bottom: var(--wl-rule);
+    background: transparent;
+    color: var(--dn-text-primary);
+    font: inherit;
+    font-size: 0.875rem;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .wl-seg:hover {
+    background: var(--dn-canvas);
+  }
+
+  /* Selected state is a solid fill plus aria-pressed, not a colour alone. */
+  .wl-seg[aria-pressed='true'] {
+    background: var(--dn-teal);
+    border-color: var(--dn-teal);
+    color: var(--dn-text-on-color);
+    font-weight: 600;
+  }
+
+  .wl-seg__count {
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .wl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: var(--dn-target-min);
+    padding: 0.75rem 1.5rem;
+    border: var(--wl-rule-strong);
+    background: var(--dn-surface);
+    color: var(--dn-text-primary);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .wl-btn:hover {
+    background: var(--dn-canvas);
+  }
+
+  .wl-btn--primary {
+    background: var(--dn-teal);
+    border-color: var(--dn-teal);
+    color: var(--dn-text-on-color);
+  }
+
+  .wl-btn--primary:hover {
+    background: var(--dn-teal);
+  }
+
+  .wl-input {
+    width: 100%;
+    min-height: var(--dn-target-min);
+    padding: 0.75rem 1rem;
+    border: var(--wl-rule-strong);
+    background: var(--dn-surface);
+    color: var(--dn-text-primary);
+    font: inherit;
+  }
+
+  .wl-input::placeholder {
+    color: var(--dn-text-secondary);
+  }
+
+  .wl-link {
+    color: var(--dn-text-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .wl-link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* ---------- labels, chips, flags --------------------------------------- */
+
+  .wl-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.125rem 0.5rem;
+    border: var(--wl-rule);
+    font-size: 0.75rem;
+    color: var(--dn-text-secondary);
+  }
+
+  .wl-field .wl-chip {
+    border-color: currentColor;
+    color: var(--dn-text-on-color);
+  }
+
+  /* Deadlines carry the word 截止 as well as the amber field. */
+  .wl-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.125rem 0.5rem;
+    background: var(--dn-amber);
+    color: var(--dn-text-on-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .wl-mark {
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  /* ---------- navigation -------------------------------------------------- */
+
+  .wl-nav {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: var(--dn-z-floating);
+    border-top: var(--wl-rule);
+  }
+
+  .wl-nav__inner {
+    display: flex;
+    align-items: stretch;
+    min-height: 3.5rem;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .wl-nav__brand {
+    display: none;
+  }
+
+  .wl-nav__list {
+    display: flex;
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .wl-nav__list > li {
+    display: flex;
+    flex: 1 1 0;
+  }
+
+  .wl-nav__link {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.125rem;
+    min-height: var(--dn-target-min);
+    padding: 0.5rem 0.25rem;
+    color: var(--dn-text-secondary);
+    text-decoration: none;
+  }
+
+  .wl-nav__label {
+    font-size: 0.8125rem;
+  }
+
+  .wl-nav__latin {
+    display: none;
+    font-size: 0.625rem;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+  }
+
+  .wl-nav__link:hover {
+    color: var(--dn-text-primary);
+  }
+
+  /* Active destination: a solid teal block, plus aria-current for assistive tech. */
+  .wl-nav__link[aria-current='page'] {
+    background: var(--dn-teal);
+    color: var(--dn-text-on-color);
+  }
+
+  .wl-nav__link[aria-current='page'] .wl-nav__label {
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    .wl-nav {
+      inset: 0 0 auto 0;
+      border-top: 0;
+      border-bottom: var(--wl-rule);
+    }
+
+    .wl-nav__inner {
+      max-width: var(--wl-shell);
+      margin-inline: auto;
+      padding: 0 var(--wl-gutter);
+      align-items: stretch;
+    }
+
+    .wl-nav__brand {
+      display: flex;
+      align-items: baseline;
+      gap: 0.625rem;
+      margin-right: auto;
+      padding: 0.75rem 0;
+      color: var(--dn-text-primary);
+      text-decoration: none;
+    }
+
+    .wl-nav__list {
+      flex: 0 0 auto;
+    }
+
+    .wl-nav__list > li {
+      flex: 0 0 auto;
+    }
+
+    .wl-nav__link {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.75rem 1.125rem;
+      min-height: 4.75rem;
+    }
+
+    .wl-nav__link:hover {
+      background: var(--dn-canvas);
+    }
+
+    .wl-nav__latin {
+      display: inline;
+    }
+  }
+
+  /* ---------- track fields (home grid) ------------------------------------ */
+
+  /* The grid is content-driven: the cell rhythm changes with how many tracks
+     the current filter matches, so no empty cell is ever coloured in. */
+  .wl-trackgrid {
+    display: grid;
+    gap: 2px;
+    background: var(--dn-divider);
+  }
+
+  .wl-trackgrid > .wl-trackfield {
+    grid-column: span 12;
+  }
+
+  @media (min-width: 768px) {
+    .wl-trackgrid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-rows: minmax(16rem, auto);
+    }
+
+    .wl-trackgrid > .wl-trackfield--half {
+      grid-column: span 6;
+    }
+
+    .wl-trackgrid > .wl-trackfield--featured {
+      grid-column: span 7;
+      grid-row: span 2;
+    }
+  }
+
+  .wl-trackfield {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    min-height: 16rem;
+    padding: 1.75rem;
+    text-decoration: none;
+  }
+
+  @media (min-width: 768px) {
+    .wl-trackfield {
+      padding: 2.25rem;
+    }
+  }
+
+  .wl-trackfield__name {
+    margin-top: auto;
+  }
+
+  .wl-trackfield__more {
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  /* ---------- timeline rail ----------------------------------------------- */
+
+  .wl-rail {
+    display: grid;
+    gap: 0.75rem;
+    padding-block: 1.75rem;
+    border-top: var(--wl-rule);
+  }
+
+  @media (min-width: 900px) {
+    .wl-rail {
+      grid-template-columns: 11rem 1fr;
+      gap: 2.5rem;
+    }
+
+    .wl-rail__head {
+      position: sticky;
+      top: 5.5rem;
+      align-self: start;
+    }
+  }
+
+  .wl-rail__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: var(--wl-rule);
+  }
+
+  .wl-node {
+    display: grid;
+    grid-template-columns: 3.25rem 1fr;
+    gap: 0 1rem;
+    width: 100%;
+    min-height: var(--dn-target-min);
+    padding: 1rem 0;
+    border: 0;
+    border-bottom: var(--wl-rule);
+    background: transparent;
+    color: var(--dn-text-primary);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .wl-node:hover {
+    background: var(--dn-surface);
+  }
+
+  .wl-node__month {
+    font-family: var(--dn-font-display);
+    font-weight: var(--dn-weight-display);
+    font-size: 1.75rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .wl-node__month span {
+    font-family: var(--dn-font);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-left: 0.125rem;
+  }
+
+  .wl-node__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .wl-node__event {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .wl-node__action {
+    color: var(--dn-text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .wl-node__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  /* Read-only rows (track key nodes) keep the grid but not the affordance. */
+  .wl-node--static {
+    cursor: default;
+  }
+
+  .wl-node--static:hover {
+    background: transparent;
+  }
+
+  .wl-node__open {
+    grid-column: 2;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--dn-text-secondary);
+  }
+
+  /* ---------- detail drawer ------------------------------------------------ */
+
+  .wl-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: var(--dn-z-panel);
+    background: var(--dn-overlay);
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .wl-drawer {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: calc(var(--dn-z-panel) + 1);
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 1.5rem var(--wl-gutter) calc(1.5rem + env(safe-area-inset-bottom));
+    animation: wl-drawer-up var(--dn-duration-expand) var(--dn-ease-in);
+  }
+
+  @keyframes wl-drawer-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes wl-drawer-in {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+
+  @media (min-width: 768px) {
+    .wl-drawer {
+      inset: 0 0 0 auto;
+      width: min(30rem, 92vw);
+      max-height: none;
+      padding: 2rem;
+      animation: wl-drawer-in var(--dn-duration-expand) var(--dn-ease-in);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wl-drawer {
+      animation: none;
+    }
+  }
+
+  .wl-defs {
+    margin: 0;
+  }
+
+  .wl-defs > div {
+    padding-block: 0.875rem;
+    border-top: var(--wl-rule);
+  }
+
+  .wl-defs dt {
+    font-size: var(--dn-size-kicker);
+    font-weight: var(--dn-weight-kicker);
+    letter-spacing: var(--dn-tracking-kicker);
+    text-transform: uppercase;
+    color: var(--dn-text-secondary);
+  }
+
+  .wl-defs dd {
+    margin: 0.375rem 0 0;
+  }
+
+  /* ---------- lists -------------------------------------------------------- */
+
+  .wl-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: var(--wl-rule);
+  }
+
+  .wl-list > li {
+    border-bottom: var(--wl-rule);
+  }
+
+  .wl-entry {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0 1rem;
+    padding: 1.25rem 0;
+    text-decoration: none;
+    color: var(--dn-text-primary);
+  }
+
+  @media (min-width: 768px) {
+    .wl-entry {
+      grid-template-columns: 3.5rem 1fr;
+      gap: 0 1.5rem;
+    }
+  }
+
+  .wl-entry:hover {
+    background: var(--dn-surface);
+  }
+
+  .wl-entry__index {
+    font-family: var(--dn-font-display);
+    font-weight: var(--dn-weight-display);
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--dn-text-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .wl-entry__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .wl-entry__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.75rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+
+  .wl-entry__desc {
+    color: var(--dn-text-secondary);
+    font-size: 0.9375rem;
+  }
+
+  .wl-entry__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  /* ---------- inline prose ------------------------------------------------ */
+
+  .wl-prose {
+    white-space: pre-line;
+  }
+
+  .wl-prose strong {
+    font-weight: 600;
+  }
 }

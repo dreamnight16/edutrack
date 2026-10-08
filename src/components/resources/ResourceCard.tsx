@@ -1,47 +1,51 @@
 import { ExternalLink } from 'lucide-react';
 import { TagBadge } from '@/components/shared/TagBadge';
 import type { ResourceEntry } from '@/types';
-
-const COST_LABELS: Record<string, string> = {
-  free: '免费',
-  paid: '付费',
-  freemium: '部分免费',
-};
-
-const COST_COLORS: Record<string, string> = {
-  free: 'bg-enrollment/10 text-enrollment',
-  paid: 'bg-sport/10 text-sport',
-  freemium: 'bg-accent/10 text-accent',
-};
+import { COST_META, RESOURCE_TYPE_LABELS } from '@/lib/theme';
+import { getTrackById } from '@/lib/tracks';
 
 interface ResourceCardProps {
   resource: ResourceEntry;
+  index: number;
 }
 
-export function ResourceCard({ resource }: ResourceCardProps) {
+export function ResourceCard({ resource, index }: ResourceCardProps) {
+  const cost = COST_META[resource.cost];
+
   return (
-    <a
-      href={resource.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="signal-surface block bg-surface rounded-card p-4 shadow-card"
-    >
-      <div className="flex items-start justify-between mb-2">
-        <h3 className="text-sm font-semibold text-foreground flex-1 mr-2">
-          {resource.name}
-        </h3>
-        <ExternalLink size={14} className="text-muted shrink-0 mt-0.5" />
-      </div>
-      <p className="text-xs text-muted mb-3">{resource.description}</p>
-      <div className="flex flex-wrap gap-1.5">
-        <TagBadge
-          label={COST_LABELS[resource.cost] ?? resource.cost}
-          colorClass={COST_COLORS[resource.cost] ?? 'bg-primary/10 text-primary'}
-        />
-        {resource.tags.slice(0, 3).map((t) => (
-          <TagBadge key={t} label={t} colorClass="bg-primary/10 text-primary" />
-        ))}
-      </div>
-    </a>
+    <li>
+      <a
+        href={resource.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="wl-entry dn-focus"
+      >
+        <span className="wl-entry__index" aria-hidden="true">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+
+        <span className="wl-entry__main">
+          <span className="wl-entry__title">
+            {resource.name}
+            <ExternalLink size={15} aria-hidden="true" />
+            <span className="sr-only">（在新窗口打开外部网站）</span>
+          </span>
+
+          <span className="wl-entry__desc">{resource.description}</span>
+
+          <span className="wl-entry__meta">
+            <TagBadge label={RESOURCE_TYPE_LABELS[resource.type]} />
+            <TagBadge
+              label={cost.label}
+              mark={cost.mark}
+              markLabel="费用类型："
+            />
+            {resource.tracks.map((trackId) => (
+              <TagBadge key={trackId} label={getTrackById(trackId)?.name ?? trackId} />
+            ))}
+          </span>
+        </span>
+      </a>
+    </li>
   );
 }

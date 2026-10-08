@@ -3,36 +3,31 @@ import { getGrades } from '@/lib/timeline';
 interface GradeSelectorProps {
   selected: string;
   onSelect: (grade: string) => void;
+  /** Node count per grade, computed from the bundled timeline. */
+  counts: Record<string, number>;
 }
 
-export function GradeSelector({ selected, onSelect }: GradeSelectorProps) {
-  const grades = getGrades();
+export function GradeSelector({ selected, onSelect, counts }: GradeSelectorProps) {
+  const options = [{ id: 'all', label: '全部' }].concat(
+    getGrades().map((grade) => ({ id: grade, label: grade }))
+  );
 
   return (
-    <div className="flex gap-2 overflow-x-auto px-4 py-3">
-      <button
-        onClick={() => onSelect('all')}
-        className={`shrink-0 px-3 py-1.5 rounded-chip text-sm font-medium transition-colors ${
-          selected === 'all'
-            ? 'bg-primary text-white'
-            : 'bg-surface text-muted hover:text-foreground border border-primary/10'
-        }`}
-      >
-        全部
-      </button>
-      {grades.map((g) => (
-        <button
-          key={g}
-          onClick={() => onSelect(g)}
-          className={`shrink-0 px-3 py-1.5 rounded-chip text-sm font-medium transition-colors ${
-            selected === g
-              ? 'bg-primary text-white'
-              : 'bg-surface text-muted hover:text-foreground border border-primary/10'
-          }`}
-        >
-          {g}
-        </button>
-      ))}
+    <div className="wl-pad">
+      <div className="wl-segbar" role="group" aria-label="按年级筛选时间节点">
+        {options.map((option) => (
+          <button
+            key={option.id}
+            type="button"
+            className="wl-seg dn-focus"
+            aria-pressed={selected === option.id}
+            onClick={() => onSelect(option.id)}
+          >
+            <span>{option.label}</span>
+            <span className="wl-seg__count">{counts[option.id] ?? 0}</span>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

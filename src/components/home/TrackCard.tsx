@@ -1,51 +1,69 @@
 import Link from 'next/link';
-import { TagBadge } from '@/components/shared/TagBadge';
-import type { TrackCard as TrackCardType } from '@/types';
-
-const CATEGORY_COLORS: Record<string, string> = {
-  competition: 'bg-competition/10 text-competition',
-  enrollment: 'bg-enrollment/10 text-enrollment',
-  art: 'bg-art/10 text-art',
-  sport: 'bg-sport/10 text-sport',
-  overseas: 'bg-overseas/10 text-overseas',
-  vocational: 'bg-vocational/10 text-vocational',
-};
-
-const CATEGORY_LABELS: Record<string, string> = {
-  competition: '竞赛',
-  enrollment: '升学',
-  art: '艺考',
-  sport: '体育',
-  overseas: '出国',
-  vocational: '职教',
-};
+import type { CSSProperties } from 'react';
+import type { TrackCard as TrackCardData } from '@/types';
+import { byGradeThenMonth, categoryMeta, fieldClass } from '@/lib/theme';
 
 interface TrackCardProps {
-  track: TrackCardType;
+  track: TrackCardData;
+  /** Position in the current filter result, used for the staggered entrance. */
+  index: number;
+  total: number;
 }
 
-export function TrackCard({ track }: TrackCardProps) {
-  const catColor = CATEGORY_COLORS[track.category] ?? 'bg-primary/10 text-primary';
+/**
+ * The cell rhythm adapts to the result count so the composition stays balanced
+ * and the divider-coloured grid background is never exposed as an empty block.
+ */
+function cellClass(index: number, total: number): string {
+  if (total <= 1) return '';
+  if (total === 2 || total >= 4) return 'wl-trackfield--half';
+  return index === 0 ? 'wl-trackfield--featured' : 'wl-trackfield--half';
+}
+
+export function TrackCard({ track, index, total }: TrackCardProps) {
+  const meta = categoryMeta(track.category);
+  const first = [...track.keyNodes].sort(byGradeThenMonth)[0];
 
   return (
-    <Link href={`/tracks/${track.id}`}>
-      <article className="signal-surface bg-surface rounded-card shadow-card p-4">
-        <div className="flex items-center gap-2 mb-2">
-          <TagBadge
-            label={CATEGORY_LABELS[track.category] ?? track.category}
-            colorClass={catColor}
-          />
+    <Link
+      href={`/tracks/${track.id}`}
+      className={`wl-trackfield dn-interactive dn-focus dn-rise ${fieldClass(
+        meta.color
+      )} ${cellClass(index, total)}`}
+      style={{ '--dn-enter-index': index } as CSSProperties}
+    >
+      <p className="wl-kicker">
+        {meta.latin} · {meta.label}
+      </p>
+
+      <div className="wl-trackfield__name">
+        <h3 className="wl-h2">{track.name}</h3>
+        <p style={{ marginTop: '0.5rem', maxWidth: '34ch' }}>{track.oneLiner}</p>
+      </div>
+
+      <dl className="wl-facts" style={{ marginTop: '1.25rem' }}>
+        <div>
+          <dt>关键节点</dt>
+          <dd>{track.keyNodes.length}</dd>
         </div>
-        <h3 className="text-lg font-bold font-display text-foreground mb-1">
-          {track.name}
-        </h3>
-        <p className="text-sm text-muted mb-3">{track.oneLiner}</p>
-        <div className="flex flex-wrap gap-1.5">
-          {track.suitableFor.slice(0, 3).map((s) => (
-            <TagBadge key={s} label={s} colorClass="bg-accent/10 text-accent" />
-          ))}
+        <div>
+          <dt>配套资源</dt>
+          <dd>{track.resources.length}</dd>
         </div>
-      </article>
+      </dl>
+
+      {first ? (
+        <p
+          className="wl-chip"
+          style={{ alignSelf: 'flex-start', marginTop: '1rem', borderColor: 'currentColor' }}
+        >
+          起点 {first.grade} · {first.month} 月
+        </p>
+      ) : null}
+
+      <p className="wl-trackfield__more">
+        查看赛道 <span aria-hidden="true">→</span>
+      </p>
     </Link>
   );
 }

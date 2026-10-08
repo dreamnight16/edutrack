@@ -1,36 +1,37 @@
 import type { TrackCategory } from '@/types';
+import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/theme';
 
-const FILTERS: Array<{ id: TrackCategory | 'all'; label: string }> = [
-  { id: 'all', label: '全部' },
-  { id: 'competition', label: '竞赛' },
-  { id: 'enrollment', label: '升学' },
-  { id: 'art', label: '艺考' },
-  { id: 'sport', label: '体育' },
-  { id: 'overseas', label: '出国' },
-  { id: 'vocational', label: '职教' },
-];
+export type CategorySelection = TrackCategory | 'all';
 
 interface CategoryFilterProps {
-  selected: TrackCategory | 'all';
-  onSelect: (id: TrackCategory | 'all') => void;
+  selected: CategorySelection;
+  onSelect: (id: CategorySelection) => void;
+  /** Result count per category, computed from the bundled tracks. */
+  counts: Record<CategorySelection, number>;
 }
 
-export function CategoryFilter({ selected, onSelect }: CategoryFilterProps) {
+export function CategoryFilter({ selected, onSelect, counts }: CategoryFilterProps) {
+  const options: Array<{ id: CategorySelection; label: string }> = [
+    { id: 'all', label: '全部' },
+    ...CATEGORY_ORDER.map((id) => ({ id, label: CATEGORY_META[id].label })),
+  ];
+
   return (
-    <div className="flex gap-2 overflow-x-auto px-4 py-3">
-      {FILTERS.map((f) => (
-        <button
-          key={f.id}
-          onClick={() => onSelect(f.id)}
-          className={`shrink-0 px-4 py-1.5 rounded-chip text-sm font-medium transition-colors ${
-            selected === f.id
-              ? 'bg-primary text-white'
-              : 'bg-surface text-muted hover:text-foreground border border-primary/10'
-          }`}
-        >
-          {f.label}
-        </button>
-      ))}
+    <div className="wl-pad">
+      <div className="wl-segbar" role="group" aria-label="按分类筛选赛道">
+        {options.map((option) => (
+          <button
+            key={option.id}
+            type="button"
+            className="wl-seg dn-focus"
+            aria-pressed={selected === option.id}
+            onClick={() => onSelect(option.id)}
+          >
+            <span>{option.label}</span>
+            <span className="wl-seg__count">{counts[option.id] ?? 0}</span>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
